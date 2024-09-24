@@ -1,0 +1,24 @@
+<header class="header content">
+
+  @if (hideSidebar()) {
+  <div class="user-info">
+    <img src="../../../assets/icons/user-avatar-template.svg" alt="USER">
+    <div class="user-txt">
+      <h4 class="text-small-bold-alt user-name">
+        Иванов
+      </h4>
+      <p class="text-small-light user-status">
+        Администратор
+      </p>
+    </div>
+    <img src="../../../assets/icons/input-arrow-down.svg" alt="open">
+  </div>
+  }@else {
+  @if (menuIsOpen()) {
+  <img class="menu-burger" src="../../../assets/icons/close-icon.svg" alt="close" (click)="closeMenu()">
+  } @else {
+  <img class="menu-burger" src="../../../assets/icons/menu-burger.svg" alt="menu" (click)="openMenu()">
+  }
+  }
+
+</header>

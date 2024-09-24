@@ -1,0 +1,161 @@
+<div class="filter">
+  <form class="filter-body" [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <h2 class="heading-medium-bold">Фильтр</h2>
+
+    <ul class="form-inputs">
+
+
+      <!-- Логин -->
+      <li class="input-item">
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('login')}">Логин</label>
+        <div class="input-block" [ngClass]="{
+          'error-border': hasError('login'),
+          'pad-right': isNotEmpty('login')
+        }">
+          <input type="text" class="text-small-regular" formControlName="login" placeholder="Введите логин"
+            [ngClass]="{'has-error': hasError('login')}" />
+          <button class="input-btn" *ngIf="isNotEmpty('login')" (click)="filterForm.get('login')?.reset()">
+            <img
+              [src]="hasError('login') ? '../../../assets/icons/close-icon-red.svg' : '../../../assets/icons/close-icon-gray.svg'"
+              alt="cancel" />
+          </button>
+        </div>
+        <ul class="errors" *ngIf="hasError('login')">
+          <li class="error-item text-small-light" *ngIf="filterForm.get('login')?.hasError('invalidChars')">
+            Недопустимые символы
+          </li>
+        </ul>
+      </li>
+
+      <!-- Телефон -->
+      <li class="input-item">
+
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('phone')}">Телефон</label>
+        <div class="input-block" [ngClass]="{
+          'error-border': hasError('phone') 
+          }">
+          <input type="text" class="text-small-regular" formControlName="phone" placeholder="+7 (XXX) XXX-XX-XX"
+            appPhoneMask [ngClass]="{
+              'has-error': hasError('phone'),
+              'pad-right': isNotEmpty('phone')
+            }" />
+          <button class="input-btn" *ngIf="isNotEmpty('phone')" (click)="filterForm.get('phone')?.reset()">
+            <img
+              [src]="hasError('phone') ? '../../../assets/icons/close-icon-red.svg' : '../../../assets/icons/close-icon-gray.svg'"
+              alt="cancel" />
+          </button>
+        </div>
+        <ul class="errors" *ngIf="hasError('phone')">
+          <li class="error-item text-small-light" *ngIf="filterForm.get('phone')?.   hasError('invalidPhone')">
+            Ожидается: +7 (XXX) XXX-XX-XX
+          </li>
+        </ul>
+      </li>
+
+      <!-- Дата создания -->
+      <li class="input-item">
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('creationDate')}">
+          Дата создания</label>
+
+        <div class="input-block" [ngClass]="{'error-border': hasError('creationDate')}">
+          <input type="date" class="text-small-regular" formControlName="creationDate"
+            [ngClass]="{'has-error': hasError('creationDate')}" />
+        </div>
+      </li>
+
+      <!-- Статус -->
+      <li class="input-item">
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('creationDate')}">
+          Статус</label>
+
+        <div class="input-block styled-select" [ngClass]="{'error-border': hasError('creationDate')}">
+          <input class="text-small-regular" formControlName="status"
+            [ngClass]="{'has-error': hasError('status'), 'pad-right': isNotEmpty('status')}" readonly
+            (click)="statusDropdownOpen= !statusDropdownOpen" />
+
+
+          <button class="input-btn" (click)="toggleDropdownForStatus()">
+            <img src="../../../assets/icons/input-arrow-down.svg" alt="input-arrow-down"
+              [ngClass]="{'rotate-icon': statusDropdownOpen}" />
+          </button>
+        </div>
+        <div *ngIf="statusDropdownOpen" class="dropdown-list">
+          <ul>
+            <li (click)="setStatus('Активен')">
+              Активен</li>
+            <li (click)="setStatus('Заблокирован')">
+              Заблокирован</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- E-mail -->
+      <li class="input-item">
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('email')}">E-mail</label>
+        <div class="input-block" [ngClass]="{'error-border': hasError('email'), 'pad-right': isNotEmpty('email')}">
+          <input type="email" class="text-small-regular" formControlName="email" placeholder="Введите email"
+            [ngClass]="{'has-error': hasError('email')}" />
+          <button class="input-btn" *ngIf="isNotEmpty('email')" (click)="filterForm.get('email')?.reset()">
+            <img
+              [src]="hasError('email') ? '../../../assets/icons/close-icon-red.svg' : '../../../assets/icons/close-icon-gray.svg'"
+              alt="cancel" />
+          </button>
+        </div>
+        <ul class="errors" *ngIf="hasError('email')">
+          <li class="error-item text-small-light" *ngIf="filterForm.get('email')?.hasError('invalidEmail')">
+            Недопустимые символы
+          </li>
+        </ul>
+      </li>
+
+      <!-- Роль -->
+      <li class="input-item">
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('role')}">Роль</label>
+
+        <div class="input-block styled-select" [ngClass]="{'error-border': hasError('role')}">
+          <input class="text-small-regular" formControlName="role"
+            [ngClass]="{'has-error': hasError('role'), 'pad-right': isNotEmpty('role')}" readonly
+            (click)="roleDropdownOpen = !roleDropdownOpen" />
+
+          <button class="input-btn" (click)="roleDropdownOpen = !roleDropdownOpen">
+            <img src="../../../assets/icons/input-arrow-down.svg" alt="input-arrow-down"
+              [ngClass]="{'rotate-icon': roleDropdownOpen}" />
+          </button>
+        </div>
+
+        <div *ngIf="roleDropdownOpen" class="dropdown-list">
+          <ul>
+            <li (click)="setRole('Администратор')">Администратор</li>
+            <li (click)="setRole('Пользователь')">Пользователь</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Дата изменения -->
+      <li class="input-item">
+        <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('changeDate')}">
+          Дата изменения</label>
+
+        <div class="input-block" [ngClass]="{'error-border': hasError('changeDate')}">
+          <input type="date" class="text-small-regular" formControlName="changeDate"
+            [ngClass]="{'has-error': hasError('changeDate')}" />
+        </div>
+      </li>
+
+
+
+    </ul>
+
+    <div class="form-btns">
+      <!-- Кнопка "Применить" (уже работает) -->
+      <app-custom-button label="Применить" size="large" bg="red" type="submit"
+        [state]="filterForm.invalid ? 'disabled' : 'normal'"></app-custom-button>
+
+      <!-- Кнопка "Отмена" -->
+      <app-custom-button label="Отмена" size="large" state="normal" bg="gray" (click)="onCancel()"></app-custom-button>
+
+      <!-- Кнопка "Сбросить" -->
+      <app-custom-button label="Сбросить" size="large" state="normal" bg="gray" (click)="onReset()"></app-custom-button>
+    </div>
+  </form>
+</div>

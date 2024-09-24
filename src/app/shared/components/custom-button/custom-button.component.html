@@ -1,0 +1,15 @@
+<button class="custom-button" [ngClass]="{
+    'large': size === 'large',
+    'normal': size === 'normal',
+    'red': bg === 'red',
+    'gray': bg === 'gray',
+    'disabled': state === 'disabled',
+    'opened': opened 
+  }" [disabled]="state === 'disabled'" [type]="type">
+  <img *ngIf="icon && iconPosition === 'left'" [src]="iconPath+icon" alt="icon" class="button-icon left" />
+
+  {{ label }}
+
+  <img *ngIf="icon && iconPosition === 'right'" [src]="iconPath+icon" alt="icon" class="button-icon right" />
+
+</button>

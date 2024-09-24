@@ -1,0 +1,51 @@
+@import '../../../styles/_mixins';
+
+.user-settings-block {
+  .user-settings-header {
+    .back-btn {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      color: var(--color-dark-gray);
+      background-color: var(--color-white-backgound);
+      margin-bottom: 32px;
+      cursor: pointer;
+    }
+
+    & h1 {
+      margin-bottom: 24px;
+    }
+
+    .header-btns {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      justify-content: center;
+
+      @include respond-to(768px) {
+        justify-content: flex-start;
+      }
+
+      .filter-btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        border-radius: 8px;
+        width: 113px;
+        height: 40px;
+
+        @include respond-to(768px) {
+          margin: 0;
+        }
+      }
+    }
+
+  }
+
+  .user-settings-body {
+    padding: 32px 0 49px;
+  }
+}

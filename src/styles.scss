@@ -1,1 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("./styles/null.scss");
+
+@import url(https://db.onlinewebfonts.com/c/1f110cb098263ea5a2e170384df65753?family=Moscow+Sans);
+
+
+:root {
+
+  @mixin respond-to($max-width) {
+    @media (max-width: $max-width) {
+      @content;
+    }
+  }
+
+  // font
+  --font-family: "Moscow Sans",
+  sans-serif;
+
+  // colors
+  --color-dark-gray: #666F78;
+  --color-white: #ffffff;
+  --color-light-gray: #A2A9B1;
+  --color-red-dark: #DA2032;
+  --color-black: #282828;
+  --color-gray-background: #E5E5E5;
+  --color-bright-red: #FF001F;
+  --color-muted-gray: #828C96;
+  --color-silver: #CBCDD2;
+  --color-bright-green: #25B553;
+  --color-light-silver: #e8ebed;
+  --color-white-backgound: #f5f6f7;
+
+  /* Лёгкий текст маленького размера */
+  .text-small-light {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  /* Жирный текст маленького размера */
+  .text-small-bold-alt {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  /* Обычный текст маленького размера */
+  .text-small-regular {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 112%;
+  }
+
+  /* Жирный текст маленького размера */
+  .text-small-bold {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  /* Лёгкий текст нормального размера */
+  .text-medium-light {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 144%;
+  }
+
+  /* Жирный текст среднего размера */
+  .text-medium-bold {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  /* Жирный текст среднего размера */
+  .heading-medium-bold {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    color: var(--color-black);
+  }
+
+  /* Жирный текст крупного размера (заголовок) */
+  .heading-large-bold {
+    font-family: "Moscow Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 120%;
+
+    @include respond-to(1024px) {
+      font-size: 22px;
+      line-height: 136%;
+    }
+  }
+
+
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 171%;
+  color: #282828;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  background: url(./assets/icons/calendar.svg) no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+
+
+// @include respond-to(1600px) {
+//   background-color: #e0e0e0; // Styles for screens up to 1600px
+// }
+
+// @include respond-to(1440px) {
+//   background-color: #c0c0c0; // Styles for screens up to 1440px
+// }
+
+// @include respond-to(1024px) {
+//   background-color: #a0a0a0; // Styles for screens up to 1024px
+// }
+
+// @include respond-to(768px) {
+//   background-color: #909090; // Styles for screens up to 768px
+// }
+
+// @include respond-to(600px) {
+//   background-color: #808080; // Styles for screens up to 600px
+// }
+
+// @include respond-to(320px) {
+//   background-color: #707070; // Styles for screens up to 320px
+// }

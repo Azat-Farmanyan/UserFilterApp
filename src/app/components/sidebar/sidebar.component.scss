@@ -1,0 +1,102 @@
+:host {
+  background-color: var(--color-dark-gray);
+}
+
+.sidebar {
+  width: 273px;
+  min-height: 100vh;
+  background-color: var(--color-dark-gray);
+
+  .sidebar-list {
+    display: flex;
+    background-color: var(--color-dark-gray);
+    flex-direction: column;
+  }
+
+  .sidebar-item {
+    padding: 25px 40px;
+    display: flex;
+    justify-content: flex-end;
+    color: var(--color-white);
+
+    border-bottom: 1px solid var(--color-light-gray);
+    cursor: pointer;
+  }
+
+  .sidebar-item-selected {
+    padding: 25px 40px;
+
+    .management-item {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .superagent {
+    display: flex;
+    gap: 17px;
+
+    .superagent-txt {
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+      padding-left: 30px;
+
+      .superagent-name {
+        color: var(--color-white);
+      }
+
+      .superagent-bank {
+        color: var(--color-gray-background);
+      }
+    }
+  }
+
+  .sidebar-item-selected {
+    // Стили для выбранного элемента сайдбара
+    background-color: var(--color-light-gray);
+    margin-top: 4px;
+
+
+    .management-item {
+      // Стили для блока управления
+      margin-bottom: 16px;
+
+      img {
+        // Стили для иконки управления
+      }
+
+      h4 {
+        color: var(--color-white);
+      }
+    }
+
+    .management-card {
+      margin-left: 40px;
+      color: var(--color-light-silver);
+      cursor: pointer;
+    }
+
+    .management-card-active {
+      color: var(--color-white);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+
+  }
+
+  .superagents {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 25px 40px;
+    gap: 17px;
+    color: var(--color-white);
+    background-color: var(--color-dark-gray);
+    cursor: pointer;
+  }
+}

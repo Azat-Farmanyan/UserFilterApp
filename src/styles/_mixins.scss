@@ -1,0 +1,11 @@
+@mixin respond-to($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin respond-range($min-width, $max-width) {
+  @media (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}

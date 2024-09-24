@@ -1,0 +1,74 @@
+@import '../../../styles/_mixins';
+
+.header {
+  background-color: var(--color-red-dark);
+  height: 70px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 0 40px;
+
+  @include respond-to(1440px) {
+    padding: 0 64px;
+  }
+
+  @include respond-to(1024px) {
+    height: 55px;
+    padding: 0 52px;
+  }
+
+  @include respond-to(1024px) {
+    height: 55px;
+    padding: 0 52px;
+  }
+
+  @include respond-to(768px) {
+    height: 55px;
+    padding: 0 48px;
+  }
+
+  @include respond-to(600px) {
+    height: 55px;
+    padding: 0 24px;
+  }
+
+
+  .menu-burger {
+    width: 25px;
+    height: 23px;
+    cursor: pointer;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 7px;
+
+    img {
+      &:first-child {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }
+
+      &:last-child {
+        cursor: pointer;
+      }
+    }
+
+    .user-txt {
+      display: flex;
+      align-items: left;
+      flex-direction: column;
+
+      .user-name {
+        color: var(--color-white);
+      }
+
+      .user-status {
+        color: var(--color-gray-background);
+      }
+    }
+  }
+}

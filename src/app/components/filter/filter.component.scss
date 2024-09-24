@@ -1,0 +1,143 @@
+@import '../../../styles/_mixins';
+
+
+
+
+.filter {
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
+  background: var(--color-white);
+  padding: 32px 40px;
+  border-radius: 8px;
+
+  .filter-body {
+    .form-inputs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+
+      @include respond-to(1440px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include respond-to(768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include respond-to(600px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .input-item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .input-label {
+          margin-bottom: 10px;
+          transition: all 0.3s ease;
+        }
+
+        .dropdown-list {
+          border: 1px solid rgba(130, 140, 150, 0.4);
+          border-radius: 8px;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
+          position: absolute;
+          background-color: var(--color-white);
+          z-index: 10;
+          top: 75px;
+          width: 100%;
+
+          & ul li {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0 13px;
+            border-radius: 8px;
+
+            &:hover {
+              background-color: var(--color-red-dark);
+              color: var(--color-white);
+            }
+          }
+        }
+
+        .input-block {
+          position: relative;
+
+          input {
+            border: 1px solid rgba(130, 140, 150, 0.4);
+            border-radius: 8px;
+            height: 44px;
+            padding-left: 13px;
+            width: 100%;
+            transition: all 0.3s ease;
+
+          }
+
+          .pad-right {
+            padding: 0 36px 0 13px !important;
+          }
+
+
+          .input-btn {
+            background: none;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            & img {
+              width: 24px;
+              height: 24px;
+              transition: transform 0.3s ease;
+            }
+
+            .rotate-icon {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .errors {
+          transition: all 0.3s ease;
+
+          .error-item {
+            transition: all 0.3s ease;
+            color: var(--color-bright-red);
+            padding-top: 3px;
+          }
+        }
+
+        .has-error {
+          color: var(--color-bright-red);
+        }
+
+        .error-label,
+        .error-text {
+          color: var(--color-bright-red);
+        }
+
+        .error-border {
+          border: 1px solid var(--color-bright-red);
+          border-radius: 8px;
+        }
+
+      }
+    }
+
+    .form-btns {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 25px;
+      flex-wrap: wrap;
+
+      @include respond-to(600px) {
+        justify-content: center;
+      }
+    }
+  }
+}

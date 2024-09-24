@@ -1,0 +1,68 @@
+.custom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  background-color: var(--color-red-dark);
+  color: var(--color-white);
+
+  &.normal {
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 171%;
+    color: var(--color-white);
+    padding: 8px 16px;
+  }
+
+  &.large {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: var(--color-white);
+    padding: 13px 42px;
+    min-width: 169px;
+  }
+
+  &.red {
+    background-color: var(--color-red-dark);
+  }
+
+  &.gray {
+    background-color: var(--color-gray-background);
+    color: var(--color-dark-gray);
+    opacity: 0.7;
+  }
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  &.disabled {
+    background-color: var(--color-gray-background);
+    color: var(--color-dark-gray);
+    filter: brightness(0.9);
+    cursor: not-allowed;
+  }
+
+
+
+  .button-icon {
+    width: 24px;
+    height: 24px;
+    // margin: 0 0.5rem;
+
+    &.left {
+      margin-right: 8px;
+    }
+
+    &.right {
+      margin-left: 8px;
+    }
+  }
+}
