@@ -82,11 +82,11 @@
         </div>
         <div *ngIf="statusDropdownOpen" class="dropdown-list">
           <ul>
-            <li (click)="setStatus('Не выбран')">
+            <li [ngClass]="{ 'active': activeStatus ==='Не выбран'}" (click)="setStatus('Не выбран')">
               Не выбран</li>
-            <li (click)="setStatus('Активен')">
+            <li [ngClass]="{ 'active': activeStatus ==='Активен'}" (click)="setStatus('Активен')">
               Активен</li>
-            <li (click)="setStatus('Заблокирован')">
+            <li [ngClass]="{ 'active': activeStatus ==='Заблокирован'}" (click)="setStatus('Заблокирован')">
               Заблокирован</li>
           </ul>
         </div>
@@ -128,9 +128,12 @@
 
         <div *ngIf="roleDropdownOpen" class="dropdown-list">
           <ul>
-            <li (click)="setRole('Не выбран')">Не выбран</li>
-            <li (click)="setRole('Администратор')">Администратор</li>
-            <li (click)="setRole('Пользователь')">Пользователь</li>
+            <li class="active" [ngClass]="{ 'active': activeRole ==='Не выбран'}" (click)="setRole('Не выбран')">Не
+              выбран</li>
+            <li [ngClass]="{ 'active': activeRole ==='Администратор'}" (click)="setRole('Администратор')">Администратор
+            </li>
+            <li [ngClass]="{ 'active': activeRole ==='Пользователь'}" (click)="setRole('Пользователь')">Пользователь
+            </li>
           </ul>
         </div>
       </li>

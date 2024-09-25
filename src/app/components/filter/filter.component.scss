@@ -59,6 +59,7 @@
             padding: 0 13px;
             border-radius: 8px;
 
+            &.active,
             &:hover {
               background-color: var(--color-red-dark);
               color: var(--color-white);

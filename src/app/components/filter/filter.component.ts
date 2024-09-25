@@ -33,6 +33,9 @@ export class FilterComponent implements OnInit {
   statusDropdownOpen = false;
   roleDropdownOpen = false;
 
+  activeRole: string = 'Не выбран';
+  activeStatus: string = 'Не выбран';
+
   filterFormService = inject(FilterFormService);
 
   ngOnInit(): void {
@@ -48,11 +51,13 @@ export class FilterComponent implements OnInit {
   }
 
   setStatus(status: string) {
+    this.activeStatus = status;
     this.filterForm.controls['status'].setValue(status);
     this.statusDropdownOpen = false;
   }
 
   setRole(role: string): void {
+    this.activeRole = role;
     this.filterForm.get('role')?.setValue(role);
     this.roleDropdownOpen = false;
   }
@@ -68,6 +73,8 @@ export class FilterComponent implements OnInit {
   onSubmit() {
     if (this.filterForm.valid) {
       this.filterFormService.updateForm(this.filterForm.value);
+      this.closeDropdowns();
+
       console.log('Форма применена');
     }
   }
