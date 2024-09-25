@@ -47,5 +47,9 @@
 
   .user-settings-body {
     padding: 32px 0 49px;
+    display: flex;
+
+    flex-direction: column;
+    gap: 32px;
   }
 }

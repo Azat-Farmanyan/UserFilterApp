@@ -1,1 +1,33 @@
-<p>user-list works!</p>,
+<div class="user-list-block">
+  <div class="user-list-header"></div>
+  <div class="user-list-body">
+    <div class="users"></div>
+  </div>
+  <div class="user-list-footer"></div>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Login</th>
+      <th>Phone</th>
+      <th>Creation Date</th>
+      <th>Status</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Change Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers">
+      <td>{{ user.id }}</td>
+      <td>{{ user.login }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.creationDate }}</td>
+      <td>{{ user.status }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>{{ user.changeDate }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -67,29 +67,27 @@ export class FilterComponent implements OnInit {
 
   onSubmit() {
     if (this.filterForm.valid) {
-      console.log('Форма отправлена', this.filterForm.value);
+      this.filterFormService.updateForm(this.filterForm.value);
+      console.log('Форма применена');
     }
-  }
-
-  resetForm() {
-    this.filterFormService.resetForm(this.filterForm);
-  }
-
-  onCancel() {
-    this.closeDropdowns();
-    this.resetForm();
-    console.log('Форма отменена');
-  }
-
-  onReset() {
-    this.closeDropdowns();
-    this.resetForm();
-
-    console.log('Форма сброшена');
   }
 
   closeDropdowns() {
     this.statusDropdownOpen = false;
     this.roleDropdownOpen = false;
+  }
+
+  onCancel() {
+    this.closeDropdowns();
+    this.filterFormService.cancelForm(this.filterForm);
+
+    console.log('Форма отменена');
+  }
+
+  onReset() {
+    this.closeDropdowns();
+    this.filterFormService.resetForm(this.filterForm);
+
+    console.log('Форма сброшена');
   }
 }

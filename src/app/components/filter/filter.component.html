@@ -4,7 +4,6 @@
 
     <ul class="form-inputs">
 
-
       <!-- Логин -->
       <li class="input-item">
         <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('login')}">Логин</label>
@@ -32,12 +31,13 @@
 
         <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('phone')}">Телефон</label>
         <div class="input-block" [ngClass]="{
-          'error-border': hasError('phone') 
+          'error-border': hasError('phone'),
+          'pad-right': isNotEmpty('phone')
+
           }">
           <input type="text" class="text-small-regular" formControlName="phone" placeholder="+7 (XXX) XXX-XX-XX"
             appPhoneMask [ngClass]="{
-              'has-error': hasError('phone'),
-              'pad-right': isNotEmpty('phone')
+              'has-error': hasError('phone')
             }" />
           <button class="input-btn" *ngIf="isNotEmpty('phone')" (click)="filterForm.get('phone')?.reset()">
             <img
@@ -68,10 +68,11 @@
         <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('creationDate')}">
           Статус</label>
 
-        <div class="input-block styled-select" [ngClass]="{'error-border': hasError('creationDate')}">
-          <input class="text-small-regular" formControlName="status"
-            [ngClass]="{'has-error': hasError('status'), 'pad-right': isNotEmpty('status')}" readonly
-            (click)="statusDropdownOpen= !statusDropdownOpen" />
+        <div class="input-block styled-select" [ngClass]="{
+            'error-border': hasError('creationDate'),
+            'pad-right': isNotEmpty('status')}">
+          <input class="text-small-regular" formControlName="status" [ngClass]="{'has-error': hasError('status')}"
+            readonly (click)="statusDropdownOpen= !statusDropdownOpen" />
 
 
           <button class="input-btn" (click)="toggleDropdownForStatus()">
@@ -81,6 +82,8 @@
         </div>
         <div *ngIf="statusDropdownOpen" class="dropdown-list">
           <ul>
+            <li (click)="setStatus('Не выбран')">
+              Не выбран</li>
             <li (click)="setStatus('Активен')">
               Активен</li>
             <li (click)="setStatus('Заблокирован')">
@@ -112,9 +115,9 @@
       <li class="input-item">
         <label class="input-label text-small-bold" [ngClass]="{'error-label': hasError('role')}">Роль</label>
 
-        <div class="input-block styled-select" [ngClass]="{'error-border': hasError('role')}">
-          <input class="text-small-regular" formControlName="role"
-            [ngClass]="{'has-error': hasError('role'), 'pad-right': isNotEmpty('role')}" readonly
+        <div class="input-block styled-select"
+          [ngClass]="{'error-border': hasError('role'), 'pad-right': isNotEmpty('role')}">
+          <input class="text-small-regular" formControlName="role" [ngClass]="{'has-error': hasError('role')}" readonly
             (click)="roleDropdownOpen = !roleDropdownOpen" />
 
           <button class="input-btn" (click)="roleDropdownOpen = !roleDropdownOpen">
@@ -125,6 +128,7 @@
 
         <div *ngIf="roleDropdownOpen" class="dropdown-list">
           <ul>
+            <li (click)="setRole('Не выбран')">Не выбран</li>
             <li (click)="setRole('Администратор')">Администратор</li>
             <li (click)="setRole('Пользователь')">Пользователь</li>
           </ul>
@@ -141,8 +145,6 @@
             [ngClass]="{'has-error': hasError('changeDate')}" />
         </div>
       </li>
-
-
 
     </ul>
 

@@ -4,7 +4,7 @@
   justify-content: center;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   border-radius: 8px;
   background-color: var(--color-red-dark);
   color: var(--color-white);
@@ -41,6 +41,10 @@
 
   &:hover {
     filter: brightness(1.05);
+  }
+
+  &:active {
+    filter: brightness(0.98);
   }
 
   &.disabled {

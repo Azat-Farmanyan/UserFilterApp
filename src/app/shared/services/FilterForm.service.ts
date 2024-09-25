@@ -5,35 +5,56 @@ import {
   phoneValidator,
   emailValidator,
 } from '../validators/filter-form-validators';
+import { User } from '../models/user.model';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterFormService {
+  private filterFormSubject = new Subject<User>();
+  userEmptyData = {
+    login: '',
+    phone: '',
+    creationDate: '',
+    status: 'Не выбран',
+    email: '',
+    role: 'Не выбран',
+    changeDate: '',
+  };
+
   // Создание формы
   createFilterForm(): FormGroup {
     return new FormGroup({
       login: new FormControl('', loginValidator()),
       phone: new FormControl('', phoneValidator()),
       creationDate: new FormControl(''),
-      status: new FormControl('Активен'),
+      status: new FormControl('Не выбран'),
       email: new FormControl('', emailValidator()),
-      role: new FormControl('Пользователь'),
+      role: new FormControl('Не выбран'),
       changeDate: new FormControl(''),
     });
   }
 
+  // Обновление формы
+  updateForm(newForm: User): void {
+    this.filterFormSubject.next(newForm);
+  }
+
+  // Получение текущих значений формы
+  getFilterValues(): Observable<User> {
+    return this.filterFormSubject;
+  }
+
   // Сброс формы
   resetForm(form: FormGroup) {
-    form.reset({
-      login: '',
-      phone: '',
-      creationDate: '',
-      status: 'Активен',
-      email: '',
-      role: 'Пользователь',
-      changeDate: '',
-    });
+    form.reset(this.userEmptyData);
+  }
+
+  // Отмена формы
+  cancelForm(form: FormGroup) {
+    form.reset(this.userEmptyData);
+    this.updateForm(this.userEmptyData);
   }
 
   // Проверка на наличие ошибок
