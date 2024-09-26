@@ -70,9 +70,9 @@
 
         <div class="input-block styled-select" [ngClass]="{
             'error-border': hasError('creationDate'),
-            'pad-right': isNotEmpty('status')}">
+            'pad-right': isNotEmpty('status')}" (click)="statusDropdownOpen= !statusDropdownOpen">
           <input class="text-small-regular" formControlName="status" [ngClass]="{'has-error': hasError('status')}"
-            readonly (click)="statusDropdownOpen= !statusDropdownOpen" />
+            readonly />
 
 
           <button class="input-btn" (click)="toggleDropdownForStatus()">

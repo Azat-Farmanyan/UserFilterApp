@@ -1,33 +1,51 @@
 <div class="user-list-block">
-  <div class="user-list-header"></div>
+  <app-user-list-header [recordsPerPage]="recordsPerPage" [startRecord]="startRecord" [endRecord]="endRecord"
+    [totalRecords]="totalRecords" [selectedRecordsCount]="selectedRecordsCount" [allUsersChecked]="allUsersChecked"
+    (recordsPerPageChange)="onRecordsPerPageChange($event)">
+  </app-user-list-header>
+
   <div class="user-list-body">
-    <div class="users"></div>
+    <table class="users">
+      <thead>
+        <tr>
+          <th>Действия</th>
+          <th>
+            <app-custom-checkbox [isChecked]="allUsersChecked"
+              (checkboxChange)="checkAllToggle($event)"></app-custom-checkbox>
+            Логин
+          </th>
+          <th>E-mail</th>
+          <th>Телефон</th>
+          <th>Роли</th>
+          <th>Дата изменения</th>
+          <th>Дата создания</th>
+          <th>Статус</th>
+          <th>Наличие ЭП</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <img src="../../../assets/icons/settings-icon.svg" alt="Settings">
+          <!-- <td>{{ user.id }}</td> -->
+          <td>
+            <app-custom-checkbox *ngIf="user.id" [isChecked]="isUserChecked(user.id)"
+              (checkboxChange)="onCheckboxChanged($event, user.id)"></app-custom-checkbox>
+            {{ user.login }}
+          </td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.creationDate }}</td>
+          <td>{{ user.status }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.changeDate }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="user-list-footer"></div>
+  <div class="user-list-footer">
+    <app-user-list-header [recordsPerPage]="recordsPerPage" [startRecord]="startRecord" [endRecord]="endRecord"
+      [totalRecords]="totalRecords" [selectedRecordsCount]="selectedRecordsCount" [allUsersChecked]="allUsersChecked"
+      (recordsPerPageChange)="onRecordsPerPageChange($event)">
+    </app-user-list-header>
+  </div>
 </div>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Login</th>
-      <th>Phone</th>
-      <th>Creation Date</th>
-      <th>Status</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Change Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of filteredUsers">
-      <td>{{ user.id }}</td>
-      <td>{{ user.login }}</td>
-      <td>{{ user.phone }}</td>
-      <td>{{ user.creationDate }}</td>
-      <td>{{ user.status }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.role }}</td>
-      <td>{{ user.changeDate }}</td>
-    </tr>
-  </tbody>
-</table>

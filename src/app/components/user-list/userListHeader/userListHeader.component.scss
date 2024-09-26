@@ -1,7 +1,3 @@
-.user-list-block {
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
-  background: var(--color-white);
-
   .user-list-header {
     min-height: 72px;
 
@@ -38,17 +34,3 @@
       color: var(--color-dark-gray);
     }
   }
-
-  .user-list-body {
-    .users {
-
-      & thead {
-        tr {
-          background-color: red;
-        }
-      }
-    }
-  }
-
-  .user-list-footer {}
-}

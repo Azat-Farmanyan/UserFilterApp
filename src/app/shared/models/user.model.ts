@@ -6,5 +6,7 @@ export interface User {
   email: string;
   role: string;
   changeDate: string;
+  selected?: boolean;
   id?: number;
+  hasESignature?: boolean;
 }
