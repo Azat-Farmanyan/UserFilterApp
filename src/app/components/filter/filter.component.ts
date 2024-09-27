@@ -74,8 +74,6 @@ export class FilterComponent implements OnInit {
     if (this.filterForm.valid) {
       this.filterFormService.updateForm(this.filterForm.value);
       this.closeDropdowns();
-
-      console.log('Форма применена');
     }
   }
 
@@ -87,14 +85,10 @@ export class FilterComponent implements OnInit {
   onCancel() {
     this.closeDropdowns();
     this.filterFormService.cancelForm(this.filterForm);
-
-    console.log('Форма отменена');
   }
 
   onReset() {
     this.closeDropdowns();
     this.filterFormService.resetForm(this.filterForm);
-
-    console.log('Форма сброшена');
   }
 }

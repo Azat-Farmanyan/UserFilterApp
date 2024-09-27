@@ -2,7 +2,7 @@ export interface User {
   login: string;
   phone: string;
   creationDate: string;
-  status: string;
+  status: UserStatus;
   email: string;
   role: string;
   changeDate: string;
@@ -10,3 +10,5 @@ export interface User {
   id?: number;
   hasESignature?: boolean;
 }
+
+export type UserStatus = 'Активен' | 'Заблокирован' | 'Не выбран';

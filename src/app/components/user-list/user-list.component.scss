@@ -40,15 +40,74 @@
   }
 
   .user-list-body {
+
+
     .users {
+      min-width: 100%;
 
       & thead {
+        height: 52px;
+
         tr {
-          background-color: red;
+          background-color: var(--color-red-dark);
+          color: var(--color-white);
+
+
+          & th {
+            padding: 0 16px 0 23px;
+
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+          }
+
+          .user-list-login {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 52px;
+          }
+        }
+      }
+
+      & tbody {
+        padding: 17px 16px 17px 23px;
+
+        tr {
+          height: 56px;
+
+          &:hover {
+            background-color: var(--color-white-backgound);
+          }
+
+          & td {
+            padding: 0 23px;
+            border-bottom: 1px solid var(--color-light-gray-v2);
+            text-align: center;
+            white-space: nowrap;
+            height: 56px;
+          }
+
+          .login {
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .action {
+            cursor: pointer;
+          }
+
+          .status-active {
+            color: var(--color-bright-green);
+          }
+
+          .status-blocked {
+            color: var(--color-bright-red);
+          }
         }
       }
     }
   }
-
-  .user-list-footer {}
 }

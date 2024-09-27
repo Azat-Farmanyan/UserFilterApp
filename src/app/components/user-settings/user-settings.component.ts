@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, type OnInit } from '@angular/core';
+import { Component, inject, ViewChild, type OnInit } from '@angular/core';
 import { CustomButtonComponent } from '../../shared/components/custom-button/custom-button.component';
 import { FilterComponent } from '../filter/filter.component';
 import { UserListComponent } from '../user-list/user-list.component';
-import { UserService } from '../../shared/services/user.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-settings',
@@ -18,15 +16,26 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss'],
 })
-export class UserSettingsComponent implements OnInit {
-  // users: any[] = [];
+export class UserSettingsComponent {
+  @ViewChild(UserListComponent) userListComponent!: UserListComponent; // Ссылка на дочерний компонент
 
-  // userService = inject(UserService);
+  filterBlockIsOpen = false;
 
-  ngOnInit(): void {
-    // this.userService.getUsers().subscribe((data) => {
-    //   this.users = data;
-    //   console.log(this.users);
-    // });
+  // Метод, вызываемый при разблокировке пользователей
+  unlockUsers(): void {
+    if (this.userListComponent) {
+      this.userListComponent.unlockUsers(); // Вызываем метод разблокировки в дочернем компоненте
+    }
+  }
+
+  // Метод, вызываемый при блокировке пользователей
+  blockUsers(): void {
+    if (this.userListComponent) {
+      this.userListComponent.blockUsers(); // Вызываем метод блокировки в дочернем компоненте
+    }
+  }
+
+  filterBtnToggle() {
+    this.filterBlockIsOpen = !this.filterBlockIsOpen;
   }
 }

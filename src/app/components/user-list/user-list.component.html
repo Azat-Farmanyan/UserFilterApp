@@ -5,14 +5,14 @@
   </app-user-list-header>
 
   <div class="user-list-body">
-    <table class="users">
+    <table class="users" cellspacing="0">
       <thead>
-        <tr>
+        <tr class="text-small-bold-alt">
           <th>Действия</th>
-          <th>
+          <th class="user-list-login">
             <app-custom-checkbox [isChecked]="allUsersChecked"
               (checkboxChange)="checkAllToggle($event)"></app-custom-checkbox>
-            Логин
+            <span>Логин</span>
           </th>
           <th>E-mail</th>
           <th>Телефон</th>
@@ -23,21 +23,30 @@
           <th>Наличие ЭП</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let user of filteredUsers">
-          <img src="../../../assets/icons/settings-icon.svg" alt="Settings">
+      <tbody class="text-small-light">
+        <tr *ngFor="let user of filteredUsers" class="text-small-light">
+          <td class="action">
+            <img src="../../../assets/icons/settings-icon.svg" alt="Settings">
+          </td>
           <!-- <td>{{ user.id }}</td> -->
-          <td>
+          <td class="login">
             <app-custom-checkbox *ngIf="user.id" [isChecked]="isUserChecked(user.id)"
               (checkboxChange)="onCheckboxChanged($event, user.id)"></app-custom-checkbox>
             {{ user.login }}
           </td>
-          <td>{{ user.phone }}</td>
-          <td>{{ user.creationDate }}</td>
-          <td>{{ user.status }}</td>
           <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
           <td>{{ user.role }}</td>
           <td>{{ user.changeDate }}</td>
+          <td>{{ user.creationDate }}</td>
+          <td [ngClass]="{
+           'status-active': user.status === 'Активен',
+           'status-blocked': user.status === 'Заблокирован'
+            }">{{ user.status }}</td>
+          <td>
+            <img [src]="user.hasESignature ? hasESignatureIconPath : hasNotESignatureIconPath"
+              [alt]="user.hasESignature ? 'Имеет электронную подпись' : 'Не имеет электронной подписи'" />
+          </td>
         </tr>
       </tbody>
     </table>

@@ -15,20 +15,26 @@
         state="normal"></app-custom-button>
 
       <app-custom-button label="Разблокировать" icon="unblock-icon.svg" iconPosition="right" size="normal"
-        state="normal"></app-custom-button>
+        state="normal" (click)="unlockUsers()"></app-custom-button>
 
-      <app-custom-button label="Разблокировать" icon="block-icon.svg" iconPosition="right" size="normal"
-        state="normal"></app-custom-button>
+      <app-custom-button label="Заблокировать" icon="block-icon.svg" iconPosition="right" size="normal" state="normal"
+        (click)="blockUsers()"></app-custom-button>
 
-      <button class="filter-btn">
+      <app-custom-button class="filter-btn" label="Фильтр"
+        [icon]="filterBlockIsOpen ?'filter-icon.svg' : 'filter-icon-white.svg'" iconPosition="left" size="normal"
+        state="normal" [bg]="filterBlockIsOpen ? 'gray': 'red'" (click)="filterBtnToggle()"></app-custom-button>
+
+      <!-- <button class="filter-btn">
         <img src="../../../assets/icons/filter-icon.svg" alt="filter-icon">
         <span class="text-small-light">Фильтр</span>
-      </button>
+      </button> -->
     </div>
 
 
     <div class="user-settings-body">
+      @if (filterBlockIsOpen ) {
       <app-filter></app-filter>
+      }
       <app-user-list></app-user-list>
     </div>
   </div>

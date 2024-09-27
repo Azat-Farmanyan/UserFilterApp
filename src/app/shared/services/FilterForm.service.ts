@@ -5,7 +5,7 @@ import {
   phoneValidator,
   emailValidator,
 } from '../validators/filter-form-validators';
-import { User } from '../models/user.model';
+import { User, UserStatus } from '../models/user.model';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class FilterFormService {
   private filterFormSubject = new Subject<User>();
-  userEmptyData = {
+  userEmptyData: User = {
     login: '',
     phone: '',
     creationDate: '',
@@ -29,7 +29,7 @@ export class FilterFormService {
       login: new FormControl('', loginValidator()),
       phone: new FormControl('', phoneValidator()),
       creationDate: new FormControl(''),
-      status: new FormControl('Не выбран'),
+      status: new FormControl<UserStatus>('Не выбран'),
       email: new FormControl('', emailValidator()),
       role: new FormControl('Не выбран'),
       changeDate: new FormControl(''),
