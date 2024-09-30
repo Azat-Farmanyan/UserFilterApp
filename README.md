@@ -1,5 +1,7 @@
 # UserFilterApp
 
+# SEE DEMO: https://user-filter-app-angular.netlify.app/user-settings
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
 
 ## Development server
